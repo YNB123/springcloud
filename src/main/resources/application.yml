@@ -1,0 +1,11 @@
+person:
+  lastName: ynb
+  age: 18
+  birth: 2017/12/15
+  maps: {d1: 1,d2: 2}
+  lists:
+    - list
+    - zhangs
+  dog:
+     name : 小狗
+     age : 2
