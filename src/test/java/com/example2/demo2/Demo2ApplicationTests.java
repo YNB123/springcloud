@@ -16,8 +16,8 @@ public class Demo2ApplicationTests {
 
     @Test
     public void contextLoads() {
-        System.out.println("asdasdasd"+person.getLastName());
-        System.out.println("---------"+person.getDog().getName());
+        System.out.println("ces"+person.getLastName());
+        System.out.println("ce2"+person.getDog().getName());
 
     }
 
