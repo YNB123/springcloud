@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../script/vue.js"></script>
+    <script src="../script/jquery-2.0.2.js"></script>
+
+    <title>计算属性，方法，监听器</title>
+</head>
+<body>
+<h1>
+     vue 模板语法
+
+     <div id="app">
+
+          1. {{firstName + ' ' +lastName }} <br>
+          2. {{fullName}}<br>
+          3. {{fullName2()}}<br>
+          4. {{fullName4}}
+         <div>
+
+
+  <script>
+
+
+          var  apps = new Vue({
+              el:"#app",
+              data:{
+                  firstName: "hxq",
+                  lastName:"ynb",
+                  fullName4:"ynb hxq"
+              },
+              //1. 计算属性  内置缓存的 以来的值没有发生变化的时候 页面渲染不会重计算
+              computed:{
+                  fullName:function () {
+                      return this.firstName+this.lastName;
+                  }
+              },
+              //2.方法
+              methods:{
+                  //不带缓存
+                  fullName2:function() {
+                      return this.firstName+" "+this.lastName;
+                  }
+              },
+              //3.监听器 也带缓存 监听的变量变了才会 执行  一开始不会执行
+              watch:{
+                  firstName:function () {
+                      this.fullName4 =this.firstName+" "+this.lastName;
+                  },
+                  lastName:function () {
+                      this.fullName4 =this.firstName+" "+this.lastName;
+                  }
+
+              }
+
+              //优先推荐计算属性的方法
+
+
+          })
+
+  </script>
+</h1>
+</body>
+</html>

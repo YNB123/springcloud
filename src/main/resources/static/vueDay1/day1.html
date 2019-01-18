@@ -17,12 +17,37 @@
 
 
   <script>
-          var  app = new Vue({
+          var  apps = new Vue({
               el:"#app",
               data:{
-                  message:"hello world"
+                  message:"hello wo123rld"
+              },
+              beforeCreate:function () {
+                  console.info("beforeCreate!")
+              },
+              created:function () {
+                  console.info("create!")
+              },
+              beforeMount:function () {
+                  console.info(this.$el)
+                  console.info("beforeMount!")
+              },
+              mounted:function () {
+                  console.info(this.$el)
+                  console.info("mounted")
+              },
+              beforeDestory:function () {
+                  console.info("beforeDestory")
+              },
+              beforeUpdate:function () {
+                  //数据发生改变时 还未渲染前
+                  console.info("beforeUpdate")
+              },
+              updated:function () {
+                  console.info("updated")
               }
           })
+
   </script>
 </h1>
 </body>

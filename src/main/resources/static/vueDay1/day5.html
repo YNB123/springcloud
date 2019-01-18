@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../script/vue.js"></script>
+    <script src="../script/jquery-2.0.2.js"></script>
+
+    <title> vue的条件渲染</title>
+</head>
+<body>
+<h1>
+    vue的条件渲染
+     <div id="app">
+
+         <div v-if="show">
+             1.{{message}}
+         </div>
+         <div v-else>
+             bye world!
+         </div>
+
+
+         <div v-show="show">
+             2.{{message}}
+         </div>
+
+
+     </div>
+
+  <script>
+      // v-show 渲染过了 只不过是 display :none;
+          var  app = new Vue({
+              el:"#app",
+              data:{
+                  show :false,
+                  message:"hello world!"
+              },
+              beforeCreate:function () {
+                  console.info("beforeCreate!")
+              }
+          })
+
+  </script>
+</h1>
+</body>
+</html>

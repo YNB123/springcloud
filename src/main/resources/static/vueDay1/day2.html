@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../script/vue.js"></script>
+    <script src="../script/jquery-2.0.2.js"></script>
+
+    <title>Title</title>
+</head>
+<body>
+<h1>
+     vue 模板语法
+
+     <div id="app">
+         <div v-text="name">
+         </div>
+         <div v-html="name2">
+         </div>
+     </div>
+
+
+  <script>
+
+      // v-text
+      // v-html
+          var  apps = new Vue({
+              el:"#app",
+              data:{
+                  name: "<h1>hxq</h1>",
+                  name2:"<h1>hxq</h1>"
+              }
+
+          })
+
+  </script>
+</h1>
+</body>
+</html>

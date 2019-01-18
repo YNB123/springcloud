@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../script/vue.js"></script>
+    <script src="../script/jquery-2.0.2.js"></script>
+
+    <title>计算属性，setter getter 方法</title>
+</head>
+<body>
+<h1>
+     vue 模板语法
+
+     <div id="app">
+          1 . {{firstName}}<br>
+          2 . {{lastName}}<br>
+          3 . {{fullName}}<br>
+     </div>
+
+</h1>
+  <script>
+
+
+          var  apps = new Vue({
+              el:"#app",
+              data:{
+                  firstName: "hxq",
+                  lastName:"ynb",
+                  fullName4:"ynb hxq"
+              },
+              //1. 计算属性  内置缓存的 以来的值没有发生变化的时候 页面渲染不会重计算
+              computed:{
+                  fullName:{
+                      get:function () {
+                          return this.firstName+" " +this.lastName;
+                      },
+                      set:function (value) {
+                          var arr = value.split(" ");
+                          this.firstName=arr[0];
+                          this.lastName = arr[1];
+                         console.log(value);
+                      }
+                  }
+              }
+
+
+          })
+
+  </script>
+
+</body>
+</html>
