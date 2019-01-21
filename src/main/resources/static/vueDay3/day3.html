@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../script/vue.js"></script>
+    <script src="../script/jquery-2.0.2.js"></script>
+
+    <title>vue使用插槽(slot)</title>
+</head>
+<body>
+<h1>
+
+     <div id="root">
+
+          <content2>
+              <p>我是插入的2</p>
+          </content2>
+
+
+
+         </div>
+
+
+  <script>
+
+
+          // Vue.component("child",{
+          //     props:['content'],
+          //     //这种方式，当需要传递的内容过多时，不适用
+          //     template:"<div v-html='this.content'></div>"
+          // })
+          Vue.component("content2",{
+              template:`<div>
+                           <p>hello</p>
+                           <slot></slot>
+                        </div>`
+          })
+
+          var  root = new Vue({
+              el:`#root`,
+
+          })
+
+  </script>
+</h1>
+</body>
+</html>

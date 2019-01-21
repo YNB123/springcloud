@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../script/vue.js"></script>
+    <script src="../script/jquery-2.0.2.js"></script>
+
+    <title> vue 作用域插槽</title>
+</head>
+<body>
+<h1>
+
+     <div id="root">
+
+          <child>
+
+          </child>
+
+         <child2>
+            <template slot-scope="props">
+            <li>{{props.item}}-hello</li>
+            </template>
+         </child2>
+
+         </div>
+
+
+  <script>
+
+
+          Vue.component("child",{
+              data:function () {
+                return {
+                    list:[1,2,3,4]
+                }
+              },
+              template:`<div>
+                            <ul>
+                             <li v-for="item of list">
+                                   {{item}}
+                             </li>
+                            </ul>
+                        </div>`
+          })
+          Vue.component("child2",{
+              data:function () {
+                  return {
+                      list:[1,2,3,4]
+                  }
+              },
+              template:`<div>
+                            <ul>
+                             <solt v-for="item of list" :item="item">
+                                   {{item}}
+                             </solt>
+                            </ul>
+                        </div>`
+          })
+
+          var  root = new Vue({
+              el:`#root`,
+
+          })
+
+  </script>
+</h1>
+</body>
+</html>

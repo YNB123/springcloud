@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../script/vue.js"></script>
+    <script src="../script/jquery-2.0.2.js"></script>
+
+    <title>Title</title>
+</head>
+<body>
+<h1>
+     vue 模板语法
+
+     <div id="root">
+
+         <child content="hxq"></child>
+         <child content="ynb"></child>
+     </div>
+
+
+  <script>
+        Vue.prototype.bus = new Vue();
+          Vue.component('child',{
+              props:{
+                  content:String
+              },
+              data:function(){
+               //子组件不允许修改父组件传的值
+                  return {
+                      selfContent:this.content
+                  }
+              },
+              template:'<div @click="handleClick">{{selfContent}}</div>',
+              methods:{
+                  handleClick:function () {
+                      //bus每个Vue实例都会有
+                      this.bus.$emit("change",this.selfContent)
+                  }
+
+              },
+              mounted:function () {
+                  //监听change事件this
+                  var this_ = this
+                  this.bus.$on('change',function (msg) {
+                      this_.selfContent=msg
+                  })
+              }
+          })
+          var  root = new Vue({
+              el:"#root"
+          })
+
+  </script>
+</h1>
+</body>
+</html>
