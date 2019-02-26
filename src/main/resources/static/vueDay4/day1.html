@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Title</title>
+    <meta charset="UTF-8">
+    <script src="../script/vue.js"></script>
+    <script src="../script/jquery-2.0.2.js"></script>
+
+</head>
+<body>
+<h1>
+    vue 中的列表过渡/封装动画
+
+     <div id="app">
+         <fade :show="show">
+             <div> hello world</div>
+         </fade>
+
+
+
+         <button @click="add">Add</button>
+         <button @click="del">Del</button>
+         <!-- 用index 作为索引 性能会差一点，但是不需要排序了-->
+         <transition-group>
+             <div v-for="(item,index) of list" :key="index">
+                 {{index+"."+item.title}}
+             </div>
+         </transition-group>
+
+
+
+     </div>
+
+
+  <script>
+
+      //封装这个效果
+      Vue.component('fade',{
+          props:['show'],
+          template:`<transition @before-enter="handleBeforeEnter" @enter="handleEnter">
+                     <slot v-if="show"></slot>
+                    </transition>`,
+          methods:{
+              handleBeforeEnter:function (el) {
+                  el.style.color='red';
+              },
+              handleEnter:function (el,done) {
+                 setTimeout(() => {
+                  el.style.color='green';
+                     done();
+                 },2000)
+              }
+          }
+      })
+
+
+
+      var count=1;
+      var  app = new Vue({
+          el: "#app",
+          data: {
+             list:[],
+              show:false
+          },
+          methods: {
+              add:function () {
+                  this.list.push({
+                      id:count++,
+                      title:"hello ynb"+count
+                  })
+                  this.show=!this.show
+              },
+              del:function () {
+                  this.list.pop()
+              }
+          }
+      });
+
+  </script>
+</h1>
+</body>
+</html>

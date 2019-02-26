@@ -42,6 +42,17 @@
             <optional>true</optional>
         </dependency>
 
+
+
+      <dependency> <groupId>com.ynb</groupId>
+        <artifactId>myutils</artifactId>
+        <version>1.0</version>
+        <scope>system</scope>
+        <systemPath>${basedir}/lib/myutils-1.0.jar</systemPath>
+      </dependency>
+
+
+
     </dependencies>
 
 
@@ -51,12 +62,27 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <proc>none</proc>
-                </configuration>
+               <configuration>
+                 <source>${java.version}</source>
+                 <target>${java.version}</target>
+                 <encoding>${project.build.sourceEncoding}</encoding>
+               </configuration>
             </plugin>
         </plugins>
+
+      <resources>
+        <resource>
+          <directory>lib</directory>
+          <targetPath>BOOT-INF/lib</targetPath>
+          <includes> <include>**/*.jar</include>
+          </includes> </resource> <resource>
+        <directory>src/main/resources</directory> </resource>
+      </resources>
+
     </build>
+
+
+
 
 
 </project>
