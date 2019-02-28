@@ -1,0 +1,7 @@
+update  zb_pro_approvebid  set  taxSumMoney=38329833 where id   =5213;
+update  zb_pro_approvebid  set  taxSumMoney=39776242 where id  =5214;
+update  zb_pro_purBid set enterControlPrice = 18000000  where id=7056;
+update  zb_pro_approvebid  set  taxSumMoney =1350968  where id =5437;
+update  zb_pro_approvebid  set  taxSumMoney =3106409  where id =5446;
+update  zb_pro_approvebid  set  taxSumMoney =3796962.1 where id =5647;
+update  zb_pro_purBid set enterControlPrice =500000 where id=6589;
